@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_university/app_colors.dart';
 
-class BackgroundWdiget extends StatelessWidget {
-  const BackgroundWdiget({Key? key}) : super(key: key);
+class BackgroundWidget extends StatelessWidget {
+  const BackgroundWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
