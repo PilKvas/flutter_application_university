@@ -1,11 +1,10 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_university/app_colors.dart';
 import 'package:flutter_application_university/screens/forgotpassord_screen.dart';
+import 'package:flutter_application_university/screens/home_screen.dart';
 import 'package:flutter_application_university/widgets/background_widget.dart';
 import 'package:flutter_application_university/widgets/custom_textfield_widget.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -28,22 +27,24 @@ class _LoginScreenState extends State<LoginScreen> {
     _emailController.dispose();
     super.dispose();
   }
+
   Future signIn() async {
-      if(_key.currentState!.validate() ){
-        try { 
+    if (_key.currentState!.validate()) {
+      try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
-           email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-        } on FirebaseAuthException catch(e){
-          showDialog(context: context, builder: (context){
-        return AlertDialog(
-          content: Text(e.message.toString()),
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
         );
-      });
-        }
+      } on FirebaseAuthException catch (e) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(e.message.toString()),
+              );
+            });
       }
-      
+    }
   }
 
   bool _passwordVisible = false;
@@ -53,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
       _passwordVisible = !_passwordVisible;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,9 +71,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: 70),
-                    SvgPicture.asset("assets/svgg.svg"),
+                    Image.asset("assets/Lotus-Flower.png", width: 200, color: AppColors.textFieldColor,),
                     const SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
                     Row(
                       children: const [
@@ -207,6 +209,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                 color: AppColors.textFieldColor),
                           ),
                         ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomeScreen(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            "Not a member? Sign up",
+                            style: TextStyle(
+                                fontFamily: "Nunito",
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: -0.3,
+                                color: AppColors.textFieldColor),
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -220,30 +241,30 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
+String? validateEmail(String? formEmail) {
+  if (formEmail == null || formEmail.isEmpty) {
+    return "E-mail address is required.";
+  }
 
-String? validateEmail(String? formEmail){
-    if(formEmail == null || formEmail.isEmpty){
-      return "E-mail address is required.";
-    }
+  String pattern = r'\w+@\w+\.\w+';
+  RegExp regex = RegExp(pattern);
 
-    String pattern = r'\w+@\w+\.\w+';
-    RegExp regex = RegExp(pattern);
-
-    if(!regex.hasMatch(formEmail)){
-      return "Invalid E-mail Address format.";
-    }
-    return null;
+  if (!regex.hasMatch(formEmail)) {
+    return "Invalid E-mail Address format.";
+  }
+  return null;
 }
 
 String? validatePassword(String? formPassword) {
-  if(formPassword == null || formPassword.isEmpty){
+  if (formPassword == null || formPassword.isEmpty) {
     return "Password is required";
   }
 
-  String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$&*~]).{8,}$';
+  String pattern =
+      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#/$&*~]).{8,}$';
 
   RegExp regex = RegExp(pattern);
-  if(!regex.hasMatch(formPassword)){
+  if (!regex.hasMatch(formPassword)) {
     return '''
 Password must ba at least 8 characters, 
 include an uppercase letter, number and symbol

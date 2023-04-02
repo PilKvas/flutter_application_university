@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_application_university/auth/main_screen.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+  );
 
   runApp(const MyApp());
 }
@@ -16,9 +16,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: const MainScreen(),
+      theme: ThemeData(
+        fontFamily: "Nunito",
+        textTheme: const TextTheme(
+          displayMedium: TextStyle(fontSize: 12.0, color: Colors.white),
+
+        ),
+      ),
     );
   }
 }

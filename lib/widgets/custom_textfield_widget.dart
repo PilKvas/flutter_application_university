@@ -4,12 +4,12 @@ import 'package:flutter_application_university/app_colors.dart';
 
 
 class CustomTextFormField extends StatelessWidget {
-  String? Function(String?)? validator;
-  TextEditingController? controller;
-  bool obscureText;
-  String? hintText;
-  Widget? suffixIcon;
-  CustomTextFormField({Key? key, this.validator, this.controller, required this.obscureText, this.hintText, this.suffixIcon}) : super(key: key);
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
+  final bool obscureText;
+  final String? hintText;
+  final Widget? suffixIcon;
+  const CustomTextFormField({Key? key, this.validator, this.controller, required this.obscureText, this.hintText, this.suffixIcon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,10 @@ class CustomTextFormField extends StatelessWidget {
                         bottom: 12.15,
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color:Color.fromRGBO(139, 41, 244, 1)),
+                        borderSide: const BorderSide(color:Color.fromRGBO(139, 41, 244, 1)),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      focusedBorder:  OutlineInputBorder(
+                      focusedBorder:  const OutlineInputBorder(
                         borderSide: BorderSide(color:Color.fromRGBO(104, 42, 245, 1)),
                       ),
                       hintText: hintText,

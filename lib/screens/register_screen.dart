@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_university/app_colors.dart';
-import 'package:flutter_application_university/main.dart';
-import 'package:flutter_application_university/screens/login_screen.dart';
+
 import 'package:flutter_application_university/widgets/background_widget.dart';
 import 'package:flutter_application_university/widgets/custom_textfield_widget.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,7 +16,6 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final int number = 3;
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();

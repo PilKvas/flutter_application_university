@@ -1,5 +1,4 @@
 import "package:firebase_auth/firebase_auth.dart";
-import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:flutter_application_university/app_colors.dart";
 import "package:flutter_application_university/widgets/background_widget.dart";
@@ -20,7 +19,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     try{
       await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
       showDialog(context: context, builder: (context){
-        return AlertDialog(
+        return const AlertDialog(
           content: Text("Password reset link sent! Check your email"),
         );
       });
@@ -91,7 +90,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 MaterialButton(
                   color: Colors.deepPurple[200],
                   onPressed: passwordReset,
-                  child: Text("Resset Password",style: TextStyle(color: Colors.white,)),
+                  child: const Text("Resset Password",style: TextStyle(color: Colors.white,)),
                 ),
               ],
             ),
