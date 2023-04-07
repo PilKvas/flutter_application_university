@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_university/screens/firebase_cloud_store.dart';
-import 'package:flutter_application_university/widgets/background_widget.dart';
 import 'package:flutter_application_university/widgets/listview_tab.dart';
 
-class TopicScreen extends StatelessWidget {
-  final  Map<String, String> item;
-  const TopicScreen({required this.item, super.key});
+
+
+class MyWidget1 extends StatelessWidget {
+    Item item;
+  MyWidget1({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +16,9 @@ class TopicScreen extends StatelessWidget {
         centerTitle: true,
         title: Column(
           children: [
-            Text(item['title'] ?? "",style: TextStyle(color: Colors.white, fontSize: 20),),
+            Text(item.title,style: TextStyle(color: Colors.white, fontSize: 20),),
                   SizedBox(height: 5,),
-                  Text("Aвтор статьи: ${item['author'] ?? ""}",style: TextStyle(color: Colors.white, fontSize: 20),),
+                  Text("Aвтор статьи: ${item.author}",style: TextStyle(color: Colors.white, fontSize: 20),),
           ],
         ),
       ),
@@ -31,7 +31,7 @@ class TopicScreen extends StatelessWidget {
               
               Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: Text(item['content'] ?? "", style: TextStyle(color: Colors.white, fontSize: 17),),
+                child: Text(item.content, style: TextStyle(color: Colors.white, fontSize: 17),),
               ),
               // Row(
               //   children: [

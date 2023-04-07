@@ -6,14 +6,18 @@ import 'package:flutter_application_university/app_colors.dart';
 class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final Function(String)? onFieldSubmitted;
   final bool obscureText;
   final String? hintText;
   final Widget? suffixIcon;
-  const CustomTextFormField({Key? key, this.validator, this.controller, required this.obscureText, this.hintText, this.suffixIcon}) : super(key: key);
+  
+  const CustomTextFormField({Key? key, this.validator, this.controller, required this.obscureText, this.hintText, this.suffixIcon, this.onFieldSubmitted}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
+                  onFieldSubmitted:     onFieldSubmitted,
                   validator: validator,
                   controller: controller,
                   obscureText: obscureText,

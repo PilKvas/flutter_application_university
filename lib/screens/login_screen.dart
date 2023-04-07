@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_university/app_colors.dart';
+import 'package:flutter_application_university/screens/firebase_cloud_store.dart';
 import 'package:flutter_application_university/screens/forgotpassord_screen.dart';
 import 'package:flutter_application_university/screens/home_screen.dart';
 import 'package:flutter_application_university/widgets/background_widget.dart';
@@ -209,25 +210,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 color: AppColors.textFieldColor),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const HomeScreen(),
-                              ),
-                            );
-                          },
-                          child: const Text(
-                            "Not a member? Sign up",
-                            style: TextStyle(
-                                fontFamily: "Nunito",
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: -0.3,
-                                color: AppColors.textFieldColor),
-                          ),
-                        ),
+                       
                       ],
                     ),
                   ],

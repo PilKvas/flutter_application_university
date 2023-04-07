@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_university/screens/about_screen.dart';
+import 'package:flutter_application_university/screens/firebase_cloud_store.dart';
+import 'package:flutter_application_university/screens/profile_screen.dart';
 
 import 'package:flutter_application_university/widgets/background_widget.dart';
 
@@ -21,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _selectedTab = index;
     });
   }
-
+  // final user = FirebaseAuth.instance.currentUser!;
   // final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
@@ -36,10 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
         const BackgroundWidget(),
         IndexedStack(
           index: _selectedTab,
-          children: const [
-            ListViewTab(),
-            Text("hello"),
-            Text("hello"),
+          children:  [
+            const ListViewTab(),
+           const MyWidget(),
+          ProfileScreen(),
           ],
         ),
         Align(
